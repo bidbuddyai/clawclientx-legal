@@ -1,0 +1,610 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ClawClientX Privacy Policy</title>
+<meta name="description" content="Privacy Policy for ClawClientX, a client app for the OpenClaw self-hosted AI gateway.">
+<style>
+  :root {
+    --bg: #0f1115;
+    --panel: #171a21;
+    --ink: #e7e9ee;
+    --muted: #a4abb8;
+    --accent: #5b9dff;
+    --line: #262b35;
+    --warn-bg: #2a2113;
+    --warn-line: #6b5417;
+    --warn-ink: #f3d99b;
+    --ok-bg: #122019;
+    --ok-line: #1f4d36;
+    --ok-ink: #a7e6c4;
+    --maxw: 820px;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #f6f7f9;
+      --panel: #ffffff;
+      --ink: #1a1d23;
+      --muted: #555c69;
+      --accent: #1f6feb;
+      --line: #e3e6eb;
+      --warn-bg: #fff8e6;
+      --warn-line: #f0d693;
+      --warn-ink: #6b5417;
+      --ok-bg: #eafaf1;
+      --ok-line: #b6e6c9;
+      --ok-ink: #1f5a3a;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    padding: 0 16px;
+  }
+  .wrap {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 40px 0 80px;
+  }
+  header.doc {
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 22px;
+    margin-bottom: 8px;
+  }
+  h1 {
+    font-size: 1.9rem;
+    line-height: 1.2;
+    margin: 0 0 6px;
+    letter-spacing: -0.01em;
+  }
+  .sub { color: var(--muted); font-size: 0.98rem; margin: 0; }
+  .meta {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-top: 14px;
+  }
+  .meta strong { color: var(--ink); font-weight: 600; }
+  h2 {
+    font-size: 1.28rem;
+    margin: 38px 0 10px;
+    letter-spacing: -0.01em;
+    scroll-margin-top: 16px;
+  }
+  h3 {
+    font-size: 1.05rem;
+    margin: 22px 0 6px;
+  }
+  p { margin: 10px 0; }
+  a { color: var(--accent); }
+  ul, ol { margin: 10px 0; padding-left: 22px; }
+  li { margin: 6px 0; }
+  code {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    padding: 1px 6px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.85em;
+    word-break: break-word;
+  }
+  .lead {
+    font-size: 1.05rem;
+    color: var(--ink);
+  }
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin: 16px 0;
+  }
+  .callout {
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin: 16px 0;
+    font-size: 0.96rem;
+  }
+  .callout .tag {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 0.74rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .warn { background: var(--warn-bg); border: 1px solid var(--warn-line); color: var(--warn-ink); }
+  .warn a { color: inherit; text-decoration: underline; }
+  .ok { background: var(--ok-bg); border: 1px solid var(--ok-line); color: var(--ok-ink); }
+  .toc {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin: 22px 0 6px;
+  }
+  .toc h2 { margin: 0 0 8px; font-size: 1.05rem; }
+  .toc ol { margin: 0; padding-left: 20px; columns: 2; column-gap: 28px; }
+  .toc li { margin: 4px 0; break-inside: avoid; }
+  .toc a { text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 0.92rem;
+    display: block;
+    overflow-x: auto;
+  }
+  th, td {
+    border: 1px solid var(--line);
+    padding: 9px 11px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th { background: var(--panel); font-weight: 600; }
+  .pill {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    color: var(--muted);
+  }
+  footer.doc {
+    margin-top: 48px;
+    padding-top: 22px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 0.88rem;
+  }
+  hr.s { border: 0; border-top: 1px solid var(--line); margin: 30px 0; }
+  @media (max-width: 620px) {
+    .toc ol { columns: 1; }
+    h1 { font-size: 1.6rem; }
+    .wrap { padding: 28px 0 64px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="doc">
+    <h1>ClawClientX Privacy Policy</h1>
+    <p class="sub">A client app for the OpenClaw self-hosted AI gateway.</p>
+    <p class="meta">
+      <strong>Effective date:</strong> May 31, 2026<br>
+      <strong>Developer:</strong> bidbuddyai (Chase Tinsley)<br>
+      <strong>Application:</strong> ClawClientX &nbsp;<span class="pill">com.bidbuddyai.clawclientx</span><br>
+      <strong>Platforms:</strong> iOS, Android, Windows, macOS &nbsp;<span class="pill">Tauri 2 + React</span>
+    </p>
+  </header>
+
+  <p class="lead">
+    ClawClientX is built to talk to a server <em>you</em> run. The developer operates no
+    backend, runs no account system, and receives none of your data. In plain terms:
+    your conversations, files, and credentials live on your device and on the OpenClaw
+    gateway you control, not with us.
+  </p>
+
+  <div class="callout ok">
+    <span class="tag">Summary</span>
+    <ul>
+      <li><strong>No developer server.</strong> We operate no backend and cannot see your chats, files, settings, or credentials.</li>
+      <li><strong>No analytics, telemetry, ads, or crash reporting.</strong> The app contains no tracking or usage-collection software of any kind.</li>
+      <li><strong>Your gateway is the destination.</strong> Chat content, attachments, voice text, photos, and (only with your permission) device data flow between your device and your own OpenClaw server.</li>
+      <li><strong>One exception to "your server only":</strong> when you browse the optional ClawHub skill catalog, the app contacts three third-party services (ClawHub, a Convex backend, and a VirusTotal link) to show skill listings and malware-scan results. Details below.</li>
+      <li><strong>Credentials are stored locally and unencrypted.</strong> Your gateway token, device pairing tokens, and device signing key are saved in your device's local app storage in plain text. They are never sent to the developer. Please read the security section.</li>
+    </ul>
+  </div>
+
+  <nav class="toc" aria-label="Table of contents">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#who">Who we are</a></li>
+      <li><a href="#model">How ClawClientX works</a></li>
+      <li><a href="#nocollect">What the developer collects</a></li>
+      <li><a href="#yourserver">Data you send to your own gateway</a></li>
+      <li><a href="#thirdparty">Third-party services (ClawHub)</a></li>
+      <li><a href="#local">Data stored on your device</a></li>
+      <li><a href="#notstored">What is not persisted</a></li>
+      <li><a href="#security">Security of stored credentials</a></li>
+      <li><a href="#permissions">Device permissions</a></li>
+      <li><a href="#purchases">Purchases and Pro</a></li>
+      <li><a href="#children">Children's privacy</a></li>
+      <li><a href="#deletion">Deleting your data</a></li>
+      <li><a href="#rights">Your choices and rights</a></li>
+      <li><a href="#changes">Changes to this policy</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ol>
+  </nav>
+
+  <h2 id="who">1. Who we are</h2>
+  <p>
+    ClawClientX is developed and published by <strong>bidbuddyai</strong> (Chase Tinsley)
+    ("we," "us," "the developer"). ClawClientX ("the app") is a client application for
+    OpenClaw, a self-hosted AI gateway. The app is distributed for iOS, Android, Windows,
+    and macOS, and is built with Tauri 2 and React.
+  </p>
+  <p>
+    We are the author of the app software. We are <strong>not</strong> the operator of any
+    server that processes your conversations. There is no "ClawClientX account," no
+    sign-up with us, and no developer-hosted database, cloud, or API that your activity
+    passes through.
+  </p>
+
+  <h2 id="model">2. How ClawClientX works (and why that matters for privacy)</h2>
+  <p>
+    ClawClientX is a <strong>thin client to a server you own</strong>. You point the app at
+    your own OpenClaw gateway by entering its address (for example
+    <code>wss://your-server.local</code>), then authenticate with a password or token and
+    approve the device through OpenClaw's device-pairing flow. From that point on, the app's
+    interactive features, including chat, sessions, skills, model selection, cron jobs,
+    hooks, configuration, and node commands, communicate over an encrypted WebSocket
+    connection directly with <em>your</em> gateway.
+  </p>
+  <p>
+    Because the gateway is infrastructure <strong>you</strong> run and control, the privacy
+    of the data you process through it (your chats, the AI models you use, the files you
+    send) is governed by how you have configured and secured that server. This policy
+    covers what the <em>ClawClientX app</em> does. It does not and cannot govern what your
+    OpenClaw server, the AI models it routes to, or any skills you install on it do with
+    your data. You should review the practices of your own gateway and any model providers
+    it connects to.
+  </p>
+
+  <h2 id="nocollect">3. What the developer collects: nothing</h2>
+  <p>
+    We have verified against the app's source code that the developer collects no personal
+    data. Specifically, the app contains:
+  </p>
+  <ul>
+    <li><strong>No first-party backend or API.</strong> There is no developer-operated server for the app to send your data to.</li>
+    <li><strong>No analytics or usage tracking.</strong> There is no Google Analytics, Firebase, Segment, Mixpanel, Amplitude, PostHog, Datadog, or similar. The app sends no usage pings or event data anywhere.</li>
+    <li><strong>No crash or error reporting.</strong> There is no Crashlytics, Sentry, Bugsnag, or similar. Runtime and connection errors are shown only in the app's own interface and local console; nothing about errors leaves your device.</li>
+    <li><strong>No advertising, ad SDKs, advertising identifiers, or device fingerprinting.</strong></li>
+    <li><strong>No third-party tracking SDKs.</strong> The app's libraries are user-interface and runtime components only; none "phone home."</li>
+  </ul>
+  <p>
+    The app does keep one purely local counter: it counts how many messages you have sent
+    so it can occasionally prompt you to leave an app-store review. That count lives only in
+    your device's local storage and is <strong>never transmitted</strong> anywhere.
+  </p>
+
+  <h2 id="yourserver">4. Data you send to your own gateway</h2>
+  <p>
+    When you use the app, the following information travels between your device and the
+    OpenClaw gateway <strong>you</strong> have connected to. It does not pass through the
+    developer:
+  </p>
+  <ul>
+    <li><strong>Your gateway address and credentials.</strong> Your server URL, and the password or token plus a device signature used to authenticate, are sent to your gateway during connection. Credentials are sent only to the host you configured.</li>
+    <li><strong>Chat messages and AI responses</strong> for your sessions, sent and streamed over the WebSocket connection.</li>
+    <li><strong>Files and images you attach or paste</strong> into chat. These are read into memory and sent inline within your chat message to your gateway.</li>
+    <li><strong>In-chat camera photos</strong> you capture, when you use the camera feature, sent to your gateway as part of the conversation.</li>
+    <li><strong>Media you view.</strong> When chat content references an image or video hosted on your gateway, the app fetches it from your gateway's media endpoint. Before attaching your bearer token to that request, the app verifies that the media host exactly matches your configured server, so your token is never sent to a different host.</li>
+    <li>
+      <strong>Device data, only if you enable "node" mode.</strong>
+      ClawClientX can act as a paired node that runs commands your gateway requests. Node mode
+      is off until you turn it on. Once you turn it on, some commands are
+      <strong>enabled by default</strong> (including device info and clipboard read) while the
+      most sensitive ones stay off until you enable them. Depending on which commands are
+      active, the following may be read on demand and sent to <em>your</em> gateway: clipboard
+      text, basic device info (browser/OS user-agent, language, CPU core count, touch-point
+      count), GPS location, and battery/memory status. See
+      <a href="#permissions">Device permissions</a> for exactly which commands are on by
+      default, including the important note that clipboard read and device info are enabled by
+      default once node mode is on.
+    </li>
+  </ul>
+  <p>
+    All of the above is governed by your gateway and your configuration, not by us. We never
+    receive a copy.
+  </p>
+
+  <h2 id="thirdparty">5. Third-party services: the ClawHub skill catalog</h2>
+  <div class="callout warn">
+    <span class="tag">Please read</span>
+    The ClawHub skill browser is the one part of the app that contacts servers other than
+    your own gateway. It does so only when you choose to use that feature.
+  </div>
+  <p>
+    ClawClientX includes an optional browser for the public ClawHub skill registry. When,
+    and only when, you open the ClawHub skill browser or type in its search box, the app
+    makes requests to the following third parties, which are <strong>not</strong> operated
+    by you and <strong>not</strong> operated by the developer:
+  </p>
+  <table>
+    <thead>
+      <tr><th>Service</th><th>What is sent</th><th>When it happens</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>ClawHub registry</strong><br><code>clawhub.ai</code></td>
+        <td>Your search-box text and the skill identifiers (slugs) you view. No login or token is sent.</td>
+        <td>When you open the ClawHub skill list, run a search, or open a skill's detail page.</td>
+      </tr>
+      <tr>
+        <td><strong>Convex backend</strong><br><code>wry-manatee-359.convex.cloud</code></td>
+        <td>A skill's identifier (slug) and the skill file's SHA-256 hash, used to retrieve VirusTotal malware-scan verdicts for that skill.</td>
+        <td>When you open a ClawHub skill's detail view.</td>
+      </tr>
+      <tr>
+        <td><strong>VirusTotal</strong><br><code>virustotal.com</code></td>
+        <td>Nothing automatically. The app builds a clickable link to the scan results for a skill's file hash.</td>
+        <td>Only if you click that link, which opens in your system browser.</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    These requests carry only what is described above (search terms, skill slugs, and file
+    hashes). They do not include your chat content, your gateway address, your credentials,
+    or any account identifier. If you never open the ClawHub skill browser, the app makes no
+    requests to these services.
+  </p>
+  <p>
+    Note that <em>installing</em> a skill does not generate third-party traffic from the
+    app: an install instruction is sent to your own gateway, which performs the installation
+    server-side.
+  </p>
+  <p>
+    The app also contains static help links to <code>docs.openclaw.ai</code>. These open in
+    your system browser only when you click them, and the only information involved is the
+    web address itself. Your use of any third-party site is subject to that site's own
+    privacy practices, which we do not control.
+  </p>
+
+  <h2 id="local">6. Data stored on your device</h2>
+  <p>
+    ClawClientX stores certain information locally so the app remembers your setup between
+    launches. This data stays in your device's local app storage. It is not sent to the
+    developer. It includes:
+  </p>
+  <ul>
+    <li><strong>Connection credentials (sensitive):</strong> your gateway authentication token or password.</li>
+    <li><strong>Device pairing tokens (sensitive):</strong> per-server tokens issued during OpenClaw device pairing.</li>
+    <li><strong>Your device signing key (sensitive):</strong> an Ed25519 private key, its public key, and a device identifier, used to sign your device's connection handshakes.</li>
+    <li>
+      <strong>Settings and preferences:</strong> theme, color palette and accent, button
+      and radius styling, optional logo URL, your saved server profiles (name, server URL,
+      authentication mode, device name, node settings), the active profile, pinned and
+      collapsed session groupings, sidebar state, panel and canvas widths, and feature
+      toggles such as thinking mode, fast mode, streaming on/off, and notifications on/off.
+    </li>
+    <li><strong>Per-profile interface state:</strong> pinned sessions and collapsed session groups for each profile.</li>
+    <li><strong>Local entitlement state:</strong> your Pro/trial status and related records. This is stored only on your device and is never transmitted.</li>
+    <li><strong>The local review-prompt counter</strong> described above (a message count only).</li>
+  </ul>
+  <p>
+    The sensitive items above are important. Please see the <a href="#security">security</a>
+    section.
+  </p>
+
+  <h2 id="notstored">7. What is not persisted</h2>
+  <p>
+    The app deliberately keeps the following in memory only, so it is not written to the
+    persisted settings store and is gone when the app closes:
+  </p>
+  <ul>
+    <li><strong>Your chat sessions list and message content.</strong> These are not saved to the persisted store; they are re-fetched from your gateway when you reconnect.</li>
+    <li><strong>Streaming text, tool-call state, subagent state, approval prompts, and queued messages.</strong></li>
+    <li><strong>Files and images you attach or paste.</strong> They are held in memory and sent in your chat message, not written to the persisted store.</li>
+    <li><strong>Camera photos and geolocation results.</strong> Produced on demand and sent to your gateway; not stored locally by the app.</li>
+    <li>
+      <strong>Voice audio and transcripts.</strong> Speech-to-text and text-to-speech run
+      entirely on your device through your platform's built-in Web Speech capabilities. The
+      app does not save your audio or transcripts and does not send them to any third-party
+      speech cloud.
+    </li>
+  </ul>
+  <div class="card">
+    <p style="margin:0">
+      <strong>One clarification about credentials.</strong> Your gateway token is excluded
+      from the app's main persisted settings blob, and the app actively removes any legacy
+      copy of the token from that blob. However, this does <em>not</em> make the token
+      ephemeral: it is instead stored separately in your device's local app storage (in
+      plain text, as described in the next section). In short, your credentials
+      <strong>are</strong> kept on your device between launches; they are simply held outside
+      the main settings blob. They are never sent to the developer.
+    </p>
+  </div>
+
+  <h2 id="security">8. Security of stored credentials</h2>
+  <div class="callout warn">
+    <span class="tag">Important security notice</span>
+    The current version of ClawClientX stores your gateway token, device pairing tokens,
+    and device signing private key in your device's local app storage <strong>in plain
+    text (unencrypted)</strong>. These secrets never leave your device and are never sent
+    to the developer, but they are not encrypted at rest in this release.
+  </div>
+  <p>
+    What this means for you:
+  </p>
+  <ul>
+    <li>
+      Anyone with access to your unlocked device, or to the app's local storage on that
+      device, could read these values. Treat your device's own lock screen, disk
+      encryption, and account security as the primary protection for these secrets.
+    </li>
+    <li>
+      Because your device signing key and tokens grant access to your OpenClaw gateway, you
+      should protect the device accordingly and, if a device is lost or compromised, rotate
+      or revoke the relevant tokens and re-pair from your gateway.
+    </li>
+    <li>
+      You can remove these stored secrets at any time by clearing the app's local data or
+      uninstalling the app (see <a href="#deletion">Deleting your data</a>).
+    </li>
+  </ul>
+  <p>
+    Connections to your gateway use a WebSocket transport. The app accepts either an
+    encrypted <code>wss://</code> (TLS) address or a plain, unencrypted <code>ws://</code>
+    address for your gateway. If you configure a <code>ws://</code> address, traffic between
+    the app and your gateway is <strong>not encrypted in transit</strong>. We strongly
+    recommend a <code>wss://</code> address so that data in transit between the app and your
+    server is protected. The security of the server itself, and of the network between your
+    device and it, is under your control.
+  </p>
+  <p>
+    We may move these secrets into operating-system secure storage (such as a system keyring
+    or secure enclave) in a future release. Any such change will be reflected in an updated
+    version of this policy.
+  </p>
+
+  <h2 id="permissions">9. Device permissions</h2>
+  <p>
+    ClawClientX requests device permissions only to support specific features, and only when
+    you use them. Where the platform shows a permission prompt, you may decline it; the
+    related feature simply will not function.
+  </p>
+
+  <h3>Features that may request a permission at the moment you use them</h3>
+  <ul>
+    <li><strong>Camera</strong> — to take an in-chat photo to include in a conversation.</li>
+    <li><strong>Microphone and speech recognition</strong> — for voice input (speech-to-text), which runs on your device.</li>
+    <li><strong>Location</strong> — only if you enable the node location command, to provide your device's GPS position to your own gateway on request.</li>
+    <li><strong>Clipboard</strong> — to read or write clipboard text, used by paste and by node clipboard commands.</li>
+    <li><strong>Notifications</strong> — to show notifications you have enabled.</li>
+    <li><strong>Battery/memory status</strong> — to report device status to your gateway when the corresponding node command is enabled.</li>
+  </ul>
+
+  <h3>Node command permission model</h3>
+  <p>
+    When you enable "node" mode, your device can run a defined set of commands requested by
+    your paired gateway. Sensitive commands are off by default and must be turned on by you:
+    <strong>location, camera, photos access, and reading notifications are all disabled by
+    default.</strong> The following are enabled by default once node mode is on: device
+    status, device info (which returns user-agent, language, CPU core count, and touch-point
+    count), showing notifications, clipboard read, clipboard write, and canvas commands.
+  </p>
+  <div class="callout warn">
+    <span class="tag">Note</span>
+    <strong>Clipboard read is enabled by default</strong> once node mode is turned on. That
+    means a gateway you have paired could read your device clipboard text by default. If you
+    do not want this, disable the clipboard command in the node settings or do not enable
+    node mode.
+  </div>
+
+  <h3>Desktop (Windows and macOS)</h3>
+  <p>
+    On desktop, the app declares only the following native capabilities: read and write
+    clipboard text, open <code>http</code>/<code>https</code> links in your system browser,
+    and show notifications.
+  </p>
+
+  <h3>Mobile (iOS and Android)</h3>
+  <p>
+    On mobile, camera, microphone, location, and notification access are requested by the
+    operating system at the time you first use the related feature, and you may grant or
+    deny them through your device's standard permission prompts. Each platform's app-store
+    privacy disclosures (Apple App Privacy and Google Play Data Safety) accompany the app
+    listing and describe the permissions for that build.
+  </p>
+
+  <h2 id="purchases">10. Purchases and ClawClientX Pro</h2>
+  <p>
+    ClawClientX currently ships <strong>free</strong>. There are <strong>no</strong> live
+    in-app purchases or subscriptions. A "ClawClientX Pro" entitlement layer exists in the
+    app, but billing is disabled in this release, and the Pro/trial status is tracked only
+    locally on your device and never transmitted.
+  </p>
+  <p>
+    If paid features are introduced in the future, purchases would be processed by the
+    platform's own store (for example, the Apple App Store or Google Play). In that case,
+    the relevant app store, not the developer, would handle your payment information under
+    its own privacy policy, and this policy would be updated to describe what, if anything,
+    the app receives.
+  </p>
+
+  <h2 id="children">11. Children's privacy</h2>
+  <p>
+    ClawClientX is a developer and power-user tool intended for a general adult audience. It
+    is not directed to children, and we do not knowingly collect personal information from
+    children. Because the developer operates no backend and collects no data, we hold no
+    personal information about any user, including children. If you are a parent or guardian
+    and believe a child has used the app on your device, you can remove all locally stored
+    data by clearing the app's data or uninstalling it. Your gateway is separately under
+    your control.
+  </p>
+
+  <h2 id="deletion">12. Deleting your data</h2>
+  <p>
+    Because the developer stores none of your data, there is nothing for us to delete and no
+    request to make of us. You control deletion entirely:
+  </p>
+  <ul>
+    <li>
+      <strong>Clear local app data:</strong> resetting or clearing the app's local data, or
+      signing out / removing a server profile within the app, removes the corresponding
+      stored settings and credentials from your device.
+    </li>
+    <li>
+      <strong>Uninstall the app:</strong> uninstalling ClawClientX removes the app's local
+      storage, including your saved credentials, device signing key, profiles, and
+      preferences, from that device.
+    </li>
+    <li>
+      <strong>Revoke device access at your gateway:</strong> to invalidate a paired device,
+      revoke or rotate its token from your OpenClaw server.
+    </li>
+    <li>
+      <strong>Conversation history:</strong> your chat sessions and messages live on your
+      gateway, not in the app's persisted store. Delete them through your gateway.
+    </li>
+  </ul>
+
+  <h2 id="rights">13. Your choices and rights</h2>
+  <p>
+    Privacy and data-protection laws in some regions (for example, the GDPR in the European
+    Economic Area and the United Kingdom, and the CCPA/CPRA in California) give individuals
+    rights over their personal data, such as the rights to access, correct, delete, or port
+    it. These rights are exercised against the party that controls or processes the data.
+  </p>
+  <p>
+    For ClawClientX specifically, the developer is <strong>not</strong> a controller or
+    processor of your personal data, because the developer holds none. Data you process
+    lives on your own device and on the OpenClaw gateway you operate, so you are able to
+    exercise these rights directly by managing that data yourself, as described in
+    <a href="#deletion">Deleting your data</a>. For data held on your gateway or processed
+    by AI model providers your gateway connects to, direct your requests to those parties.
+    We do not sell or share personal data, because we do not collect any.
+  </p>
+
+  <h2 id="changes">14. Changes to this policy</h2>
+  <p>
+    We may update this Privacy Policy to reflect changes in the app or for legal,
+    operational, or clarity reasons. When we do, we will revise the "Effective date" at the
+    top of this page and post the updated policy at the same location. Material changes,
+    such as the introduction of any data collection or a change to how credentials are
+    stored, will be described in the updated policy. Your continued use of the app after an
+    update takes effect constitutes acceptance of the revised policy.
+  </p>
+
+  <h2 id="contact">15. Contact</h2>
+  <p>
+    Questions about this policy or the app's privacy practices can be sent to:
+  </p>
+  <p>
+    <strong>bidbuddyai (Chase Tinsley)</strong><br>
+    Email: <a href="mailto:support@bidbuddyai.com">support@bidbuddyai.com</a>
+  </p>
+
+  <footer class="doc">
+    <p>
+      This policy describes ClawClientX (<code>com.bidbuddyai.clawclientx</code>), a client
+      application for the OpenClaw self-hosted AI gateway. It describes the behavior of the
+      app software only. It does not govern the OpenClaw gateway you operate, the AI models
+      your gateway connects to, or any third-party services or skills you choose to use.
+    </p>
+    <p>&copy; <span id="yr"></span> bidbuddyai. Effective date: May 31, 2026.</p>
+  </footer>
+
+</div>
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>

@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ClawClientX - Support &amp; Help</title>
+  <style>
+    /* ── Reset &amp; base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #0e1117;
+      --surface:     #161b27;
+      --surface2:    #1e2535;
+      --border:      #2a3349;
+      --accent:      #4fa3e8;
+      --accent-dim:  #2a5278;
+      --text:        #e2e8f0;
+      --text-muted:  #8896b0;
+      --text-soft:   #a9b8cc;
+      --green:       #34d399;
+      --yellow:      #fbbf24;
+      --red:         #f87171;
+      --radius:      10px;
+      --radius-sm:   6px;
+      --max-w:       780px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 15px;
+      padding: 0 16px;
+    }
+
+    /* ── Layout ── */
+    .page-wrap {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding-bottom: 80px;
+    }
+
+    /* ── Header ── */
+    header {
+      padding: 40px 0 28px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 40px;
+    }
+    .logo-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .logo-icon {
+      width: 40px; height: 40px;
+      background: linear-gradient(135deg, var(--accent), #7c6cde);
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; font-weight: 700; color: #fff;
+      flex-shrink: 0;
+    }
+    .logo-text {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.3px;
+    }
+    .logo-text span { color: var(--accent); }
+    header p {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-top: 4px;
+    }
+
+    /* ── TOC ── */
+    nav.toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin-bottom: 40px;
+    }
+    nav.toc h2 {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    nav.toc ol {
+      list-style: none;
+      counter-reset: toc;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 24px;
+    }
+    nav.toc li { counter-increment: toc; }
+    nav.toc li a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 14px;
+    }
+    nav.toc li a::before {
+      content: counter(toc) ". ";
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+    nav.toc li a:hover { text-decoration: underline; }
+    @media (max-width: 500px) {
+      nav.toc ol { grid-template-columns: 1fr; }
+    }
+
+    /* ── Sections ── */
+    section {
+      margin-bottom: 52px;
+      scroll-margin-top: 24px;
+    }
+    h1 {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+      letter-spacing: -0.3px;
+    }
+    h2 {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      margin: 20px 0 8px;
+    }
+    p { margin-bottom: 12px; color: var(--text-soft); }
+    a { color: var(--accent); }
+    a:hover { text-decoration: underline; }
+    ul, ol { padding-left: 20px; margin-bottom: 12px; color: var(--text-soft); }
+    li { margin-bottom: 5px; }
+    strong { color: var(--text); font-weight: 600; }
+
+    /* ── Code / inline ── */
+    code {
+      font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+      font-size: 13px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1px 5px;
+      color: #7dd3fc;
+    }
+    pre {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      overflow-x: auto;
+      margin-bottom: 14px;
+      font-family: "SF Mono", "Fira Code", Consolas, monospace;
+      font-size: 13px;
+      color: #7dd3fc;
+      line-height: 1.5;
+    }
+
+    /* ── Cards ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 22px;
+      margin-bottom: 16px;
+    }
+    .card p:last-child, .card ul:last-child { margin-bottom: 0; }
+
+    /* ── Steps ── */
+    .steps { list-style: none; padding: 0; counter-reset: step; }
+    .steps li {
+      counter-increment: step;
+      display: flex;
+      gap: 14px;
+      margin-bottom: 18px;
+      align-items: flex-start;
+    }
+    .steps li::before {
+      content: counter(step);
+      min-width: 28px; height: 28px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .steps li .step-body { flex: 1; }
+    .steps li .step-body strong { display: block; margin-bottom: 4px; color: var(--text); }
+
+    /* ── Callouts ── */
+    .callout {
+      display: flex;
+      gap: 12px;
+      padding: 14px 16px;
+      border-radius: var(--radius-sm);
+      margin-bottom: 14px;
+      font-size: 14px;
+    }
+    .callout .icon { flex-shrink: 0; font-size: 16px; margin-top: 1px; }
+    .callout.info   { background: #0f2a40; border: 1px solid #1e4f75; }
+    .callout.warn   { background: #2b1f06; border: 1px solid #5a3e0a; }
+    .callout.tip    { background: #0e2b1e; border: 1px solid #1a4f35; }
+    .callout.info p, .callout.warn p, .callout.tip p { margin: 0; color: var(--text-soft); }
+
+    /* ── Troubleshoot accordion ── */
+    details {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+    details[open] { border-color: var(--accent-dim); }
+    summary {
+      cursor: pointer;
+      padding: 16px 18px;
+      font-weight: 600;
+      font-size: 14.5px;
+      color: var(--text);
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      user-select: none;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::before {
+      content: "+";
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--accent);
+      width: 18px;
+      text-align: center;
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+    details[open] summary::before { content: "−"; }
+    .details-body {
+      padding: 0 18px 18px;
+      border-top: 1px solid var(--border);
+      padding-top: 14px;
+    }
+    .details-body p:last-child, .details-body ul:last-child { margin-bottom: 0; }
+
+    /* ── Feature grid ── */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+    }
+    .feature-card .feat-icon {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+    .feature-card h4 {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 5px;
+    }
+    .feature-card p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* ── Badge ── */
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 4px;
+      vertical-align: middle;
+      margin-left: 6px;
+    }
+    .badge-green  { background: #0d3325; color: var(--green); border: 1px solid #1a5c40; }
+    .badge-blue   { background: #0d243b; color: var(--accent); border: 1px solid var(--accent-dim); }
+
+    /* ── Slash command table ── */
+    .cmd-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      margin-bottom: 14px;
+    }
+    .cmd-table th {
+      text-align: left;
+      padding: 8px 12px;
+      background: var(--surface2);
+      color: var(--text-muted);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      border-bottom: 1px solid var(--border);
+    }
+    .cmd-table td {
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-soft);
+      vertical-align: top;
+    }
+    .cmd-table tr:last-child td { border-bottom: none; }
+    .cmd-table td:first-child { font-family: "SF Mono", Consolas, monospace; color: #7dd3fc; font-size: 13px; white-space: nowrap; }
+
+    /* ── Privacy bar ── */
+    .privacy-bar {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+    .privacy-bar .shield { font-size: 24px; flex-shrink: 0; }
+    .privacy-bar p { margin: 0; font-size: 14px; color: var(--text-soft); }
+    .privacy-bar strong { color: var(--text); }
+
+    /* ── Contact ── */
+    .contact-card {
+      background: linear-gradient(135deg, #0f1e35 0%, #1a1030 100%);
+      border: 1px solid var(--accent-dim);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      text-align: center;
+    }
+    .contact-card h3 { margin: 0 0 8px; font-size: 17px; color: var(--text); }
+    .contact-card p  { margin: 0 0 16px; font-size: 14px; color: var(--text-muted); }
+    .contact-btn {
+      display: inline-block;
+      padding: 10px 24px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .contact-btn:hover { background: #3a8fd4; text-decoration: none; }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+    footer a { color: var(--text-muted); }
+
+    /* ── Responsive ── */
+    @media (max-width: 500px) {
+      body { font-size: 14px; }
+      h1 { font-size: 22px; }
+      h2 { font-size: 17px; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .privacy-bar { flex-direction: column; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- ═══ HEADER ═══ -->
+  <header>
+    <div class="logo-row">
+      <div class="logo-icon">C</div>
+      <div class="logo-text">Claw<span>ClientX</span></div>
+    </div>
+    <p>Support &amp; Help &nbsp;&middot;&nbsp; v0.6&nbsp;&nbsp;|&nbsp;&nbsp;iOS &middot; Android &middot; macOS &middot; Windows</p>
+  </header>
+
+  <!-- ═══ TOC ═══ -->
+  <nav class="toc" aria-label="Table of contents">
+    <h2>On this page</h2>
+    <ol>
+      <li><a href="#what-is">What is ClawClientX?</a></li>
+      <li><a href="#connect">Getting connected</a></li>
+      <li><a href="#troubleshoot">Troubleshooting</a></li>
+      <li><a href="#features">Feature tour</a></li>
+      <li><a href="#slash">Slash commands</a></li>
+      <li><a href="#privacy">Privacy &amp; data</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#contact">Contact support</a></li>
+    </ol>
+  </nav>
+
+
+  <!-- ═══ 1. WHAT IS ═══ -->
+  <section id="what-is">
+    <h2>1 &nbsp; What is ClawClientX?</h2>
+
+    <p>ClawClientX is a mobile and desktop client for the <strong>OpenClaw self-hosted AI gateway</strong>. It gives you a full-featured chat and agentic workspace that runs entirely against <strong>your own OpenClaw server</strong> - no third-party AI backend, no developer cloud, no telemetry.</p>
+
+    <div class="callout info">
+      <span class="icon">&#128161;</span>
+      <p><strong>You must have an OpenClaw gateway to use this app.</strong> ClawClientX is a thin client - it connects over WebSocket to the OpenClaw server you operate. If you have not installed OpenClaw yet, see the <a href="https://docs.openclaw.ai" target="_blank" rel="noopener">OpenClaw documentation</a> before continuing.</p>
+    </div>
+
+    <p>Once connected, the app surfaces everything your gateway offers: every AI model you have configured, every skill installed on the server, all paired devices, cron jobs, hooks, and agent activity - all in one place, on any of your devices.</p>
+
+    <div class="card">
+      <h3 style="margin-top:0">What you need before you start</h3>
+      <ul>
+        <li>An OpenClaw gateway running and accessible from your device (local network or public URL)</li>
+        <li>The gateway's WebSocket URL - typically <code>wss://your-hostname</code> or <code>ws://192.168.x.x:port</code> on a local network</li>
+        <li>Either the gateway <strong>password</strong> or a valid <strong>auth token</strong></li>
+        <li>Access to a terminal or the OpenClaw admin UI to approve the device pairing after first connect</li>
+      </ul>
+    </div>
+  </section>
+
+
+  <!-- ═══ 2. GETTING CONNECTED ═══ -->
+  <section id="connect">
+    <h2>2 &nbsp; Getting connected</h2>
+
+    <p>Follow these steps the first time you connect a new device. The same flow applies whether you are on iOS, Android, macOS, or Windows.</p>
+
+    <ol class="steps">
+      <li>
+        <div class="step-body">
+          <strong>Open Settings and enter your gateway URL</strong>
+          Tap the gear icon (or open <strong>Settings</strong> from the sidebar). In the <em>Server URL</em> field, enter your gateway address in WebSocket format:
+          <pre>wss://your-openclaw-host.example.com
+ws://192.168.1.50:8080</pre>
+          Use <code>wss://</code> for TLS (strongly recommended over the internet) or <code>ws://</code> for a plain local connection. Do not include a trailing slash or path.
+        </div>
+      </li>
+      <li>
+        <div class="step-body">
+          <strong>Choose an auth mode</strong>
+          Select either <strong>Password</strong> or <strong>Token</strong> depending on how your OpenClaw gateway is configured. Enter the credential in the field that appears. The credential is used only to authenticate the initial connection - it is not stored on disk after the session ends.
+        </div>
+      </li>
+      <li>
+        <div class="step-body">
+          <strong>Set a device name (optional)</strong>
+          Give this device a recognisable name (e.g. <em>Chase-iPhone</em> or <em>Work-Mac</em>). This name will appear in your gateway's device list, which makes approvals and node management easier to read.
+        </div>
+      </li>
+      <li>
+        <div class="step-body">
+          <strong>Tap Save &amp; Connect</strong>
+          The app will attempt to open a WebSocket connection to your gateway and begin the Ed25519 device pairing handshake. A <em>Pending Approval</em> indicator will appear. This is normal - the device is waiting for you to grant it access on the gateway side.
+        </div>
+      </li>
+      <li>
+        <div class="step-body">
+          <strong>Approve the device on your OpenClaw gateway</strong>
+          On the machine running OpenClaw, approve the pairing. From a terminal:
+          <pre>openclaw devices approve</pre>
+          Or use the OpenClaw web admin UI under <strong>Devices</strong> &rarr; find the pending device &rarr; <strong>Approve</strong>. The device name you entered in step 3 will be shown.
+          <div class="callout warn" style="margin-top:10px">
+            <span class="icon">&#9888;&#65039;</span>
+            <p>If you close the app before approving, the pairing token expires. Return to Settings and tap <strong>Reconnect</strong> to generate a new pairing request.</p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="step-body">
+          <strong>Reconnect after approval</strong>
+          After approving on the gateway, return to ClawClientX. Tap <strong>Reconnect</strong> (or the app may reconnect automatically within a few seconds). You should see the connection status change to <span style="color: var(--green); font-weight: 600;">Connected</span> and the chat interface will load with your sessions and skills.
+        </div>
+      </li>
+    </ol>
+
+    <h3>Multiple gateway profiles</h3>
+    <p>ClawClientX supports saving and switching between multiple OpenClaw server connections. Tap the profile selector at the top of the sidebar to add a second gateway, a staging server, or a VPN-only connection. Each profile stores its own URL, auth mode, and device name independently.</p>
+
+    <h3>Permissions the app will request</h3>
+    <div class="card">
+      <ul style="margin:0">
+        <li><strong>Network access</strong> - required at launch to connect to your gateway via WebSocket</li>
+        <li><strong>Notifications</strong> - optional, requested when you first enable background response alerts in Settings</li>
+        <li><strong>Microphone</strong> - requested only the first time you tap the voice dictation button or activate Talk Mode</li>
+        <li><strong>Camera</strong> - requested only the first time you tap the in-app camera capture button</li>
+        <li><strong>Clipboard read/write</strong> - only in Node mode, and only when the gateway requests clipboard access via the node capability you have enabled</li>
+      </ul>
+    </div>
+  </section>
+
+
+  <!-- ═══ 3. TROUBLESHOOTING ═══ -->
+  <section id="troubleshoot">
+    <h2>3 &nbsp; Troubleshooting</h2>
+
+    <details>
+      <summary>WebSocket connection failed / Cannot reach gateway</summary>
+      <div class="details-body">
+        <p>This is the most common issue. Work through the checklist:</p>
+        <ul>
+          <li><strong>URL scheme:</strong> confirm the URL starts with <code>wss://</code> (TLS) or <code>ws://</code> (plain). An <code>https://</code> or <code>http://</code> URL will not work.</li>
+          <li><strong>Gateway is running:</strong> SSH into the host and verify OpenClaw is up - <code>systemctl status openclaw</code> or equivalent.</li>
+          <li><strong>Reachability:</strong> from the device, try loading <code>https://your-host</code> in a browser. If the page does not load, the host is not reachable (firewall, DNS, VPN required?).</li>
+          <li><strong>Port:</strong> if OpenClaw is on a non-standard port, include it in the URL: <code>wss://your-host:9000</code>.</li>
+          <li><strong>Allowed origins:</strong> OpenClaw may enforce a CORS/origin allowlist. Add your device's origin or set <code>allowedOrigins: ["*"]</code> in the gateway config during initial setup, then lock it down after pairing.</li>
+          <li><strong>Self-signed TLS:</strong> on iOS and Android, a self-signed certificate will cause the connection to fail unless the CA is installed as a trusted root on the device. Use a real certificate (e.g. Let's Encrypt via a reverse proxy) or connect via <code>ws://</code> on a local LAN.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>Device stuck in "Pending Approval" / pairing never completes</summary>
+      <div class="details-body">
+        <ul>
+          <li>Go to your OpenClaw gateway and run <code>openclaw devices list</code> to verify the pending entry appears.</li>
+          <li>Approve it with <code>openclaw devices approve &lt;device-id&gt;</code> or via the admin UI.</li>
+          <li>After approving, return to the app and tap <strong>Reconnect</strong> - the app does not always auto-poll after a long wait.</li>
+          <li>If the entry does not appear on the gateway at all, the WebSocket connection was never established. Resolve the connection issue first (see above).</li>
+          <li>If you see <em>duplicate</em> pending entries, delete the stale ones on the gateway before approving the current one.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>Model picker is empty - no models listed</summary>
+      <div class="details-body">
+        <p>ClawClientX calls <code>listModels()</code> on the gateway. If the list is empty:</p>
+        <ul>
+          <li>No AI provider has been configured on your OpenClaw gateway. Add at least one provider (Anthropic, OpenAI, Ollama, etc.) in the gateway config before connecting.</li>
+          <li>Verify the provider credentials are valid - an invalid API key will cause the gateway to return zero models.</li>
+          <li>Check the gateway logs for errors on the <code>/models</code> RPC endpoint.</li>
+        </ul>
+        <p>The <strong>/models</strong> slash command inside the app performs the same lookup and will show the same result.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Skills panel shows nothing or shows only a spinner</summary>
+      <div class="details-body">
+        <ul>
+          <li>The app calls the <code>skills.status</code> RPC on your gateway. If the gateway does not have any skills installed, the list will be empty - this is expected. Install skills via ClawHub or directly on the server.</li>
+          <li>If the spinner never resolves, the RPC call is timing out - check gateway logs for errors.</li>
+          <li>The <strong>ClawHub</strong> tab in the Skills panel makes a separate call to <code>https://clawhub.ai/api/v1</code> for the public marketplace. If your device has no internet access, the marketplace tab will fail while your local gateway skills will still load normally.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>Voice input not working</summary>
+      <div class="details-body">
+        <ul>
+          <li>ClawClientX uses the platform's Web Speech API (<code>SpeechRecognition</code> / <code>webkitSpeechRecognition</code>). On iOS, this requires Safari's engine and a live microphone grant.</li>
+          <li>On Android, confirm you have granted microphone permission to ClawClientX in <strong>Settings &rarr; Apps &rarr; ClawClientX &rarr; Permissions</strong>.</li>
+          <li>On macOS and Windows, the app will prompt for microphone access the first time voice is activated. If you denied the prompt, re-grant it in System Preferences / Windows Privacy settings.</li>
+          <li>Wake-word mode ("openclaw", "claude", or a custom word) requires the microphone to remain active in the background. Some iOS Low Power Mode configurations can interrupt this.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>Notifications not arriving for background sessions</summary>
+      <div class="details-body">
+        <ul>
+          <li>Enable notifications in the app: <strong>Settings &rarr; Notifications &rarr; Enable</strong>.</li>
+          <li>Confirm the OS notification permission is granted for ClawClientX.</li>
+          <li>Notifications fire when a response arrives in a session that is not currently the active tab. If you are looking at the session, no notification is sent (by design).</li>
+          <li>On iOS, background WebSocket activity may be throttled when the app is fully backgrounded. Response notifications may be delayed until you bring the app forward.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>Theme or accent color did not save after restart</summary>
+      <div class="details-body">
+        <p>Theme preferences (palette, custom accent, radius mode, light/dark) are persisted on-device via the app's storage layer and survive restarts. If your theme reset:</p>
+        <ul>
+          <li>Check that you tapped <strong>Apply</strong> or left the settings view normally - changes staged but not applied may not persist.</li>
+          <li>Reinstalling or clearing app data will wipe stored preferences. Reconfigure from <strong>Settings &rarr; Appearance</strong>.</li>
+          <li>The gateway token and chat sessions are intentionally <em>not</em> persisted - reconnecting and re-opening sessions after a fresh install is expected behavior.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>Image paste / file attachment not accepted</summary>
+      <div class="details-body">
+        <ul>
+          <li>Images are capped at <strong>5 MB</strong> per file. Paste or drop a smaller image.</li>
+          <li>General file attachments (PDF, TXT, JSON, DOCX, XLSX) are capped at <strong>10 MB</strong>.</li>
+          <li>Supported file types: JPEG, PNG, GIF, WebP (images); PDF; plain text; JSON; DOCX; XLSX. Other formats will be rejected with an error message.</li>
+          <li>Camera capture requires the camera permission - if the capture button is grayed out, grant camera access in OS settings and restart the app.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>Canvas panel is blank or shows a connection error</summary>
+      <div class="details-body">
+        <p>The Canvas panel embeds your gateway's canvas UI at <code>https://your-gateway/__openclaw__/canvas/</code> in a resizable iframe. If it is blank:</p>
+        <ul>
+          <li>Confirm the Canvas feature is enabled in your OpenClaw gateway config.</li>
+          <li>The canvas URL is derived from your gateway host. If your gateway uses a self-signed cert or is HTTP-only, the embedded iframe may be blocked by the OS WebView security policy.</li>
+          <li>Try accessing <code>https://your-gateway/__openclaw__/canvas/</code> in a browser - if it loads there, the issue is iframe sandboxing. Report this via the support email below.</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+
+  <!-- ═══ 4. FEATURE TOUR ═══ -->
+  <section id="features">
+    <h2>4 &nbsp; Feature tour</h2>
+    <p>A quick reference to everything ClawClientX surfaces. All features connect back to your OpenClaw gateway - nothing is processed on a developer-operated server.</p>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feat-icon">&#128196;</div>
+        <h4>Multi-session chat tabs</h4>
+        <p>Run multiple conversations at once, each in its own tab. Pin important sessions, see unread badges, and switch mid-stream without losing context.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon">&#9881;&#65039;</div>
+        <h4>Skills panel + ClawHub</h4>
+        <p>Browse and toggle the 150+ skills installed on your gateway. The ClawHub tab lets you discover and install additional skills from the public marketplace.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon">&#129302;</div>
+        <h4>Model picker (40+ models)</h4>
+        <p>Switch models per session from a grouped, filterable list of every model your gateway has configured. Supports all major providers.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon">&#128101;</div>
+        <h4>Agent dashboard</h4>
+        <p>See all running agents with live tool calls and subagent activity. Kill runaway subagents with one tap. Pop any subagent out into its own window.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon">&#128421;&#65039;</div>
+        <h4>Nodes view</h4>
+        <p>See all paired devices, manage approval policies, and run capability commands remotely. Includes live activity per node and a network diagram.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon">&#127908;</div>
+        <h4>Voice input + Talk Mode</h4>
+        <p>Dictate messages hands-free or enable wake-word listening ("openclaw", "claude", or custom). Talk Mode runs a full listen-think-speak loop.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon">&#128247;</div>
+        <h4>Image paste + file attach</h4>
+        <p>Paste or drag images directly into the chat input. Attach PDFs, text, JSON, DOCX, and XLSX. Use the camera button to snap a photo inline.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon">&#127774;</div>
+        <h4>Themes + accent colors</h4>
+        <p>Six named palettes, a custom hex accent, adjustable button colors, and compact/comfortable/spacious radius modes. Full light/dark toggle.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon">&#128200;</div>
+        <h4>Token usage dashboard</h4>
+        <p>Interactive bar and pie charts showing token consumption and estimated cost across all sessions, accessible from the sidebar or <code>/usage</code>.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon">&#128336;</div>
+        <h4>Cron jobs</h4>
+        <p>Create, pause, and delete scheduled jobs on your gateway from a dedicated view. Set recurring prompts or automation triggers on any schedule.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon">&#128279;</div>
+        <h4>Hooks management</h4>
+        <p>View and toggle event-driven gateway automations from the Hooks tab in the right panel.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon">&#128396;</div>
+        <h4>Gateway config editor</h4>
+        <p>View and patch your OpenClaw gateway configuration directly from the app using the schema-driven editor - no terminal required for common changes.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon">&#128064;</div>
+        <h4>Canvas panel</h4>
+        <p>Open your gateway's canvas UI in a resizable side panel alongside the chat. Resize to any width without leaving the app.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon">&#128462;</div>
+        <h4>Export conversations</h4>
+        <p>Download any conversation as a Markdown or JSON file with one click from the session context menu.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon">&#128274;</div>
+        <h4>Pinned messages</h4>
+        <p>Pin individual messages within a conversation for quick reference without scrolling back.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon">&#9889;</div>
+        <h4>Streaming responses</h4>
+        <p>Responses arrive token-by-token as the model generates them. Disable streaming in Settings if you are on a low-bandwidth connection.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ 5. SLASH COMMANDS ═══ -->
+  <section id="slash">
+    <h2>5 &nbsp; Slash commands</h2>
+    <p>Type <code>/</code> in any chat input to open the autocomplete menu. A few frequently used commands:</p>
+
+    <table class="cmd-table">
+      <thead>
+        <tr><th>Command</th><th>What it does</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>/models</td><td>Open the model picker flyout for the current session</td></tr>
+        <tr><td>/think [level]</td><td>Set reasoning depth: <code>off</code> / <code>minimal</code> / <code>low</code> / <code>medium</code> / <code>high</code> / <code>max</code></td></tr>
+        <tr><td>/task</td><td>Route a structured task to your gateway with optional presets (ship-feature, fix-bug, code-audit, research)</td></tr>
+        <tr><td>/agents</td><td>Open the agent dashboard</td></tr>
+        <tr><td>/cron</td><td>Open cron job management</td></tr>
+        <tr><td>/usage</td><td>Open the token usage dashboard</td></tr>
+        <tr><td>/canvas</td><td>Toggle or open the canvas side panel</td></tr>
+        <tr><td>/config</td><td>Open the gateway config editor</td></tr>
+        <tr><td>/new</td><td>Create a new chat session</td></tr>
+        <tr><td>/clear</td><td>Clear the current session's message history</td></tr>
+      </tbody>
+    </table>
+
+    <p>Press <kbd style="background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:2px 6px;font-size:12px;">Cmd K</kbd> / <kbd style="background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:2px 6px;font-size:12px;">Ctrl K</kbd> anywhere in the app to open the command palette, which provides quick access to all sessions, settings, and commands without typing a slash prefix.</p>
+  </section>
+
+
+  <!-- ═══ 6. PRIVACY ═══ -->
+  <section id="privacy">
+    <h2>6 &nbsp; Privacy &amp; data</h2>
+
+    <div class="privacy-bar">
+      <div class="shield">&#128274;</div>
+      <p><strong>ClawClientX does not transmit your data to any developer-operated server.</strong> Every AI request, every message, and every file you attach travels exclusively between the app and the OpenClaw gateway you control. The developer runs no backend, maintains no database of your conversations, and has embedded no analytics or telemetry SDKs in the app. The one exception is the optional ClawHub skill browser, which contacts third-party services described below.</p>
+    </div>
+
+    <h3>What is stored where</h3>
+    <div class="card">
+      <ul style="margin:0">
+        <li><strong>Persisted on-device</strong> (survives app restarts): server URL, server profiles, auth mode, device name, theme and appearance preferences, sidebar state, node settings, pinned session keys, and entitlement state.</li>
+        <li><strong>Kept in memory only</strong> (cleared on app exit): your gateway auth token or password, all chat session messages and history, and any files you have attached or pasted. None of this is written to disk.</li>
+        <li><strong>One optional set of third-party calls</strong>: when you open the <strong>ClawHub</strong> skill browser, the app contacts the public ClawHub registry (<code>clawhub.ai</code>) with your search text and the skill identifiers you view, and, when you open a skill's detail page, sends that skill's identifier and file hash to a Convex backend (<code>wry-manatee-359.convex.cloud</code>) to fetch malware-scan results. No account, credentials, or conversation data is sent. If you never open the ClawHub browser, none of these calls happen. All other network activity is WebSocket traffic to your own gateway.</li>
+      </ul>
+    </div>
+
+    <p>For the full privacy policy, see <a href="https://bidbuddyai.com/clawclientx/privacy" target="_blank" rel="noopener">privacy policy</a>.</p>
+  </section>
+
+
+  <!-- ═══ 7. PRICING ═══ -->
+  <section id="pricing">
+    <h2>7 &nbsp; Pricing</h2>
+    <p>ClawClientX is <strong>currently free</strong> with no in-app purchases and no active subscriptions. A <strong>ClawClientX Pro</strong> upgrade is planned for a future release (anticipated one-time purchase, approximately $4.99) that will gate certain power features. Today, every feature in the app is fully unlocked for all users at no cost.</p>
+
+    <div class="callout tip">
+      <span class="icon">&#10003;</span>
+      <p>Features listed as "Pro" in the UI are fully accessible today. Billing is disabled in the current release. No credit card is needed, and nothing will charge automatically when Pro pricing launches - it will be an opt-in purchase.</p>
+    </div>
+
+    <p>Features planned for Pro gating include: multiple gateway profiles, voice output and Talk Mode, Node command runner, gateway config editor, conversation export, command palette, and custom themes/accents.</p>
+  </section>
+
+
+  <!-- ═══ 8. CONTACT ═══ -->
+  <section id="contact">
+    <h2>8 &nbsp; Contact support</h2>
+    <p>If the troubleshooting steps above did not resolve your issue, reach out directly. Include the platform (iOS/Android/macOS/Windows), the app version (visible in Settings &rarr; About), and a brief description of what you were doing when the issue occurred.</p>
+
+    <div class="contact-card">
+      <h3>Still stuck?</h3>
+      <p>Send an email and we will get back to you as soon as possible.</p>
+      <a class="contact-btn" href="mailto:support@bidbuddyai.com">support@bidbuddyai.com</a>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <p>ClawClientX &nbsp;&middot;&nbsp; <a href="https://bidbuddyai.com/clawclientx/privacy">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="https://docs.openclaw.ai" target="_blank" rel="noopener">OpenClaw Docs</a></p>
+    <p style="margin-top:6px">Built by bidbuddyai (Chase Tinsley). Requires your own OpenClaw gateway.</p>
+  </footer>
+
+</div>
+</body>
+</html>
